@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="-Java -Classloader," />
 
 
 
@@ -84,19 +84,19 @@
 
 
 
-<meta name="description" content="title: Hello Worlddate: 2016-09-17 01:45:22
-tags: -hello worldWelcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find t">
+<meta name="description" content="三个类加载器　　-Bootstrap Classloader　　-Extension Classloader　　-Application Classloader
+加载机制　　-Parent Delegation　　-why？　　-Reason:　　①为什么不只使用一个类加载器？　　如果自己也定义一个类：”java.lang.String”，那么如果JVM加载了你自己定义的类，让jdk/jre/li">
 <meta property="og:type" content="article">
-<meta property="og:title" content="WanghuiRs' Blog">
-<meta property="og:url" content="http://yoursite.com/2016/09/14/hello-world/index.html">
+<meta property="og:title" content="About Classloader">
+<meta property="og:url" content="http://yoursite.com/2016/10/01/About-Classloader/index.html">
 <meta property="og:site_name" content="WanghuiRs' Blog">
-<meta property="og:description" content="title: Hello Worlddate: 2016-09-17 01:45:22
-tags: -hello worldWelcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find t">
-<meta property="og:updated_time" content="2016-09-17T14:40:50.183Z">
+<meta property="og:description" content="三个类加载器　　-Bootstrap Classloader　　-Extension Classloader　　-Application Classloader
+加载机制　　-Parent Delegation　　-why？　　-Reason:　　①为什么不只使用一个类加载器？　　如果自己也定义一个类：”java.lang.String”，那么如果JVM加载了你自己定义的类，让jdk/jre/li">
+<meta property="og:updated_time" content="2016-10-01T17:23:59.810Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="WanghuiRs' Blog">
-<meta name="twitter:description" content="title: Hello Worlddate: 2016-09-17 01:45:22
-tags: -hello worldWelcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find t">
+<meta name="twitter:title" content="About Classloader">
+<meta name="twitter:description" content="三个类加载器　　-Bootstrap Classloader　　-Extension Classloader　　-Application Classloader
+加载机制　　-Parent Delegation　　-why？　　-Reason:　　①为什么不只使用一个类加载器？　　如果自己也定义一个类：”java.lang.String”，那么如果JVM加载了你自己定义的类，让jdk/jre/li">
 
 
 
@@ -117,9 +117,9 @@ tags: -hello worldWelcome to Hexo! This is your very first post. Check documenta
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2016/09/14/hello-world/"/>
+  <link rel="canonical" href="http://yoursite.com/2016/10/01/About-Classloader/"/>
 
-  <title>  | WanghuiRs' Blog </title>
+  <title> About Classloader | WanghuiRs' Blog </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -249,7 +249,7 @@ tags: -hello worldWelcome to Hexo! This is your very first post. Check documenta
             
             
               
-                
+                About Classloader
               
             
           </h1>
@@ -261,8 +261,8 @@ tags: -hello worldWelcome to Hexo! This is your very first post. Check documenta
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-09-14T23:07:40+08:00" content="2016-09-14">
-              2016-09-14
+            <time itemprop="dateCreated" datetime="2016-10-01T23:16:42+08:00" content="2016-10-01">
+              2016-10-01
             </time>
           </span>
 
@@ -289,21 +289,13 @@ tags: -hello worldWelcome to Hexo! This is your very first post. Check documenta
       
 
       
-        <hr>
-<p>title: Hello World<br>date: 2016-09-17 01:45:22</p>
-<h2 id="tags-hello-world"><a href="#tags-hello-world" class="headerlink" title="tags: -hello world"></a>tags: -hello world</h2><p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.<br><a id="more"></a></p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><pre><code class="bash">$ hexo new <span class="string">"My New Post"</span>
-</code></pre>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><pre><code class="bash">$ hexo server
-</code></pre>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><pre><code class="bash">$ hexo generate
-</code></pre>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><pre><code class="bash">$ hexo deploy
-</code></pre>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
+        <h2 id="三个类加载器"><a href="#三个类加载器" class="headerlink" title="三个类加载器"></a>三个类加载器</h2><p>　　-Bootstrap Classloader<br>　　-Extension Classloader<br>　　-Application Classloader</p>
+<h2 id="加载机制"><a href="#加载机制" class="headerlink" title="加载机制"></a>加载机制</h2><p>　　-Parent Delegation<br>　　-why？<br>　　-Reason:<br>　　①为什么不只使用一个类加载器？<br>　　如果自己也定义一个类：”java.lang.String”，那么如果JVM加载了你自己定义的类，让jdk/jre/lib下的”java.lang.String”<br>何去何从。<br>　　②为什么要双亲委派？<br>　　每一个类在加载的时候都会被所加载的类加载器所标识，只有当classloader+package+class都相同的时候，才会判定两个类相同。<br>所以自己定一个类”java.lang.String”，”永远”不会被加载，正常情况下不会被加载。</p>
+<h2 id="定义自己的Classloader"><a href="#定义自己的Classloader" class="headerlink" title="定义自己的Classloader"></a>定义自己的Classloader</h2><p>　　-why?<br>　　JVM提供的Classloader只能加载特定目录的jar和class，</p>
+<blockquote>
+<p>Bootstrap Classloader加载的目录：负责加载JDK中的核心类库，jdk/jre/lib或通过-Xbootclasspath参数指定路径中的，且被虚拟机认可（按文件名识别，如rt.jar）的类。<br>Extension Classloader加载的目录：jdk/jre/ext或通过java.ext.dirs系统变量指定路径中的类库。<br>Application Classloader加载的目录：应用程序classpath目录下的所有jar和class文件。<br>所以，当你想加载一个自己定义类时，比如从网络上加载一个class，其他位置的类。<br>（<em>未完待续</em>）</p>
+<h2 id="一个考烂了的面试题"><a href="#一个考烂了的面试题" class="headerlink" title="一个考烂了的面试题"></a>一个考烂了的面试题</h2><p>　　如何加载一个”java.lang.String”？<br>　　Answer:看上面-_-</p>
+</blockquote>
 
       
     </div>
@@ -324,18 +316,24 @@ tags: -hello worldWelcome to Hexo! This is your very first post. Check documenta
 
     <footer class="post-footer">
       
+        <div class="post-tags">
+          
+            <a href="/tags/Java-Classloader/" rel="tag">#-Java -Classloader</a>
+          
+        </div>
+      
 
       
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
+              <a href="/2016/09/25/my-thinking/" rel="next" title="一些瞎想">
+                <i class="fa fa-chevron-left"></i> 一些瞎想
+              </a>
+            
           </div>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2016/09/17/a/" rel="prev" title="杂货店">
-                杂货店 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -442,7 +440,7 @@ tags: -hello worldWelcome to Hexo! This is your very first post. Check documenta
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#tags-hello-world"><span class="nav-number">1.</span> <span class="nav-text">tags: -hello world</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Quick-Start"><span class="nav-number">2.</span> <span class="nav-text">Quick Start</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Create-a-new-post"><span class="nav-number">2.1.</span> <span class="nav-text">Create a new post</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Run-server"><span class="nav-number">2.2.</span> <span class="nav-text">Run server</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Generate-static-files"><span class="nav-number">2.3.</span> <span class="nav-text">Generate static files</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Deploy-to-remote-sites"><span class="nav-number">2.4.</span> <span class="nav-text">Deploy to remote sites</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#三个类加载器"><span class="nav-number">1.</span> <span class="nav-text">三个类加载器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#加载机制"><span class="nav-number">2.</span> <span class="nav-text">加载机制</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#定义自己的Classloader"><span class="nav-number">3.</span> <span class="nav-text">定义自己的Classloader</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#一个考烂了的面试题"><span class="nav-number">4.</span> <span class="nav-text">一个考烂了的面试题</span></a></li></ol></div>
             
           </div>
         </section>

@@ -248,6 +248,202 @@
             
               
                 
+                <a class="post-title-link" href="/2016/10/01/About-Classloader/" itemprop="url">
+                  About Classloader
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-10-01T23:16:42+08:00" content="2016-10-01">
+              2016-10-01
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="三个类加载器"><a href="#三个类加载器" class="headerlink" title="三个类加载器"></a>三个类加载器</h2><p>　　-Bootstrap Classloader<br>　　-Extension Classloader<br>　　-Application Classloader</p>
+<h2 id="加载机制"><a href="#加载机制" class="headerlink" title="加载机制"></a>加载机制</h2><p>　　-Parent Delegation<br>　　-why？<br>　　-Reason:<br>　　①为什么不只使用一个类加载器？<br>　　如果自己也定义一个类：”java.lang.String”，那么如果JVM加载了你自己定义的类，让jdk/jre/lib下的”java.lang.String”<br>何去何从。<br>　　②为什么要双亲委派？<br>　　每一个类在加载的时候都会被所加载的类加载器所标识，只有当classloader+package+class都相同的时候，才会判定两个类相同。<br>所以自己定一个类”java.lang.String”，”永远”不会被加载，正常情况下不会被加载。</p>
+<h2 id="定义自己的Classloader"><a href="#定义自己的Classloader" class="headerlink" title="定义自己的Classloader"></a>定义自己的Classloader</h2><p>　　-why?<br>　　JVM提供的Classloader只能加载特定目录的jar和class，</p>
+<blockquote>
+<p>Bootstrap Classloader加载的目录：负责加载JDK中的核心类库，jdk/jre/lib或通过-Xbootclasspath参数指定路径中的，且被虚拟机认可（按文件名识别，如rt.jar）的类。<br>Extension Classloader加载的目录：jdk/jre/ext或通过java.ext.dirs系统变量指定路径中的类库。<br>Application Classloader加载的目录：应用程序classpath目录下的所有jar和class文件。<br>所以，当你想加载一个自己定义类时，比如从网络上加载一个class，其他位置的类。<br>（<em>未完待续</em>）</p>
+<h2 id="一个考烂了的面试题"><a href="#一个考烂了的面试题" class="headerlink" title="一个考烂了的面试题"></a>一个考烂了的面试题</h2><p>　　如何加载一个”java.lang.String”？<br>　　Answer:看上面-_-</p>
+</blockquote>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/09/25/my-thinking/" itemprop="url">
+                  一些瞎想
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-09-25T22:40:38+08:00" content="2016-09-25">
+              2016-09-25
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>　　读了王垠大神的<a href="www.yinwang.org">博客</a>，记一下自己的学到的东西和理解。<br><strong>请带着批判的思想来读，并友好的阐述您的见解，email:wanghuirs@163.com</strong></p>
+<h1 id="思想-vs-工具"><a href="#思想-vs-工具" class="headerlink" title="思想 vs 工具"></a>思想 vs 工具</h1><p>　　对于一种语言、框架、系统的学习，应该从其中的<strong>思想</strong> <strong>设计</strong>着手，思想是灵魂，设计是实现的方法。</p>
+<h1 id="‘用户友好’-vs-‘精英主义’"><a href="#‘用户友好’-vs-‘精英主义’" class="headerlink" title="‘用户友好’ vs ‘精英主义’"></a>‘用户友好’ vs ‘精英主义’</h1><p>　　</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/09/17/a/" itemprop="url">
                   杂货店
                 </a>
@@ -462,7 +658,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">2</span>
+              <span class="site-state-item-count">4</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -472,7 +668,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">1</span>
+                <span class="site-state-item-count">3</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
