@@ -90,7 +90,7 @@
 <meta property="og:url" content="http://yoursite.com/2016/10/01/About-Classloader/index.html">
 <meta property="og:site_name" content="WanghuiRs' Blog">
 <meta property="og:description" content="关于类加载器，自己的一点总结。">
-<meta property="og:updated_time" content="2016-10-02T14:56:20.096Z">
+<meta property="og:updated_time" content="2016-10-02T15:00:15.264Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="About Classloader">
 <meta name="twitter:description" content="关于类加载器，自己的一点总结。">
@@ -291,9 +291,10 @@
 <h2 id="加载机制"><a href="#加载机制" class="headerlink" title="加载机制"></a>加载机制</h2><p>　　-Parent Delegation<br>　　-why？<br>　　-Reason:<br>　　①为什么不只使用一个类加载器？<br>　　如果自己也定义一个类：”java.lang.String”，那么如果JVM加载了你自己定义的类，让jdk/jre/lib下的”java.lang.String”<br>何去何从。<br>　　②为什么要双亲委派？<br>　　每一个类在加载的时候都会被所加载的类加载器所标识，只有当classloader+package+class都相同的时候，才会判定两个类相同。<br>所以自己定一个类”java.lang.String”，”永远”不会被加载，正常情况下不会被加载。</p>
 <h2 id="定义自己的Classloader"><a href="#定义自己的Classloader" class="headerlink" title="定义自己的Classloader"></a>定义自己的Classloader</h2><p>　　-why?<br>　　JVM提供的Classloader只能加载特定目录的jar和class，</p>
 <blockquote>
-<p>Bootstrap Classloader加载的目录：负责加载JDK中的核心类库，jdk/jre/lib或通过-Xbootclasspath参数指定路径中的，且被虚拟机认可（按文件名识别，如rt.jar）的类。<br>Extension Classloader加载的目录：jdk/jre/ext或通过java.ext.dirs系统变量指定路径中的类库。<br>Application Classloader加载的目录：应用程序classpath目录下的所有jar和class文件。<br>所以，当你想加载一个自己定义类时，比如从网络上加载一个class，其他位置的类。<br>（<em>未完待续</em>）</p>
-<h2 id="一个考烂了的面试题"><a href="#一个考烂了的面试题" class="headerlink" title="一个考烂了的面试题"></a>一个考烂了的面试题</h2><p>　　如何加载一个”java.lang.String”？<br>　　Answer:看上面-_-</p>
+<p>Bootstrap Classloader加载的目录：负责加载JDK中的核心类库，jdk/jre/lib或通过-Xbootclasspath参数指定路径中的，且被虚拟机认可（按文件名识别，如rt.jar）的类。<br>Extension Classloader加载的目录：jdk/jre/ext或通过java.ext.dirs系统变量指定路径中的类库。<br>Application Classloader加载的目录：应用程序classpath目录下的所有jar和class文件。  </p>
 </blockquote>
+<p>所以，当你想加载一个自己定义类时，比如从网络上加载一个class，其他位置的类。<br>（<em>未完待续</em>）</p>
+<h2 id="一个考烂了的面试题"><a href="#一个考烂了的面试题" class="headerlink" title="一个考烂了的面试题"></a>一个考烂了的面试题</h2><p>　　如何加载一个”java.lang.String”？<br>　　Answer:看上面-_-</p>
 
       
     </div>
